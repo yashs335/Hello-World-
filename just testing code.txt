@@ -1,0 +1,43 @@
+
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              top: 10, left: 200, bottom: 10),
+                          child: GestureDetector(
+                              onTap: () {
+                                TextEditingController resetPassword =
+                                    TextEditingController();
+                                AlertDialog(
+                                  actions: [
+                                    TextFormField(
+                                      controller: resetPassword,
+                                      maxLength: 8,
+                                      autocorrect: true,
+                                      decoration: InputDecoration(
+                                          suffix: InkWell(
+                                        onTap: () async {
+                                          String? res = await AdminLoginService
+                                              .instance
+                                              .forgotPassword(
+                                                  resetPassword.text);
+                                          if (res == null) {
+                                            showSnackBar("sucess", context);
+                                            Navigator.pop(context);
+                                          } else {
+                                            showSnackBar(res, context);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.send_rounded,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                      )),
+                                    )
+                                  ],
+                                );
+                              },
+                              child: TextLato(
+                                text: "Forgot Password?",
+                                fontColor: theme.primary,
+                              ))),
