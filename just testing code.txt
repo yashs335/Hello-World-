@@ -38,6 +38,6 @@
                                 );
                               },
                               child: TextLato(
-                                text: "Forgot Password?",
+                                text: "Change Password?",
                                 fontColor: theme.primary,
                               ))),
